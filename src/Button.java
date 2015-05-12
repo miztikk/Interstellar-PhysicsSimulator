@@ -20,6 +20,9 @@ public class Button {
 		hover(p);
 		p.fill(fill);
 		p.rect(x, y, size, size);
+		p.fill(255);
+		p.textAlign(p.LEFT, p.TOP);
+		p.text(name, x, y + size);
 		if (isHovering(p)) {
 			p.fill(255);
 			p.textAlign(p.RIGHT);

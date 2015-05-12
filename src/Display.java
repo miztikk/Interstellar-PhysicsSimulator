@@ -22,9 +22,6 @@ public class Display {
 			parent.text("timeSpeed: " + e.getTimeSpeed() + " projectiles: "
 					+ e.getProjectiles().size(), 5, 20);
 		}
-		for (Button b : buttons) {
-			b.display(parent);
-		}
 		for (Projectile p : e.getProjectiles()) {
 			if (debug) {
 				parent.fill(255);
@@ -33,6 +30,9 @@ public class Display {
 			}
 			determineFill(p.getType());
 			parent.ellipse(p.getX(), p.getY(), p.getRadius(), p.getRadius());
+		}
+		for (Button b : buttons) {
+			b.display(parent);
 		}
 	}
 
