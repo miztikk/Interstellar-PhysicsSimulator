@@ -28,7 +28,23 @@ public class Display {
 	}
 
 	public void determineFill(String type) {
+		Color c = new Color(0, 0, 0);
+		System.out.println(type);
+		if (type.contains("ast"))
+			c = Color.newBrown();
+		if (type.contains("moo"))
+			c = Color.newWhite();
+		if (type.contains("pla"))
+			c = Color.newBlue();
+		if (type.contains("sta"))
+			c = Color.newYellow();
+		else
+			c = Color.newBlack();
+		extractColor(c);
+	}
 
+	public void extractColor(Color c) {
+		parent.fill(c.getR(), c.getG(), c.getB());
 	}
 
 	public void switchDebug() {

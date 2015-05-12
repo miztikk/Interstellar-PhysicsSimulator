@@ -1,5 +1,5 @@
 public class Color {
-	int r, g, b;
+	private int r, g, b;
 
 	public Color(int red, int green, int blue) {
 		r = red;
@@ -26,4 +26,28 @@ public class Color {
 	public static Color newBlack() {
 		return new Color(0, 0, 0);
 	}
+
+	public int getR() {
+		return r;
+	}
+
+	public void setR(int r) {
+		this.r = r;
+	}
+
+	public int getG() {
+		return g;
+	}
+
+	public void setG(int g) {
+		this.g = g;
+	}
+
+	public int getB() {
+		return b;
+	}
+
+	public void setB(int b) {
+		this.b = b;
+	} 
 }
