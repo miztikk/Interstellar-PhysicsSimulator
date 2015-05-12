@@ -15,6 +15,17 @@ public class Button {
 		fill = 200;
 		clicked = false;
 	}
+	
+	public void display(PApplet p) {
+		hover(p);
+		p.fill(fill);
+		p.rect(x, y, size, size);
+		if (isHovering(p)) {
+			p.fill(255);
+			p.textAlign(p.RIGHT);
+			p.text(description, p.mouseX, p.mouseY);
+		}		
+}
 
 	public void click(PApplet p) {
 		// to be instantiated
