@@ -6,13 +6,15 @@ public class Mass {
 	public Mass(double m, float radius, float x, float y) {
 		mass = m;
 		this.radius = radius;
+		updateType();
 		this.x = x;
 		this.y = y;
 	}
 
 	public Mass(double m, float x, float y) {
 		mass = m;
-		radius = (float) ((mass / 6000.0) / Math.pow(4.3, 8));
+		updateRadius();
+		updateType();
 		this.x = x;
 		this.y = y;
 	}
@@ -23,14 +25,14 @@ public class Mass {
 
 	public void setMass(double mass) {
 		this.mass = mass;
-		updateRadius(this.mass);
+		updateRadius();
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public void updateType(double mass) {
+	public void updateType() {
 		if (mass < Math.pow(9, 10))
 			type = "asteroid";
 		if (mass < Math.pow(6, 14))
@@ -43,7 +45,7 @@ public class Mass {
 			type = "hole";
 	}
 
-	public void updateRadius(double mass) {
+	public void updateRadius() {
 		radius = (float) ((mass / 6000.0) / Math.pow(4.3, 8));
 	}
 

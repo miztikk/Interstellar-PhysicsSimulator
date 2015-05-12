@@ -22,8 +22,13 @@ public class Display {
 				parent.text(p.toString(), p.getX() - p.getRadius(), p.getY()
 						- p.getRadius());
 			}
+			determineFill(p.getType());
 			parent.ellipse(p.getX(), p.getY(), p.getRadius(), p.getRadius());
 		}
+	}
+
+	public void determineFill(String type) {
+
 	}
 
 	public void switchDebug() {

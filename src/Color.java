@@ -18,4 +18,12 @@ public class Color {
 	public static Color newBlue() {
 		return new Color(0, 0, 255);
 	}
+
+	public static Color newYellow() {
+		return new Color(255, 255, 0);
+	}
+
+	public static Color newBlack() {
+		return new Color(0, 0, 0);
+	}
 }
