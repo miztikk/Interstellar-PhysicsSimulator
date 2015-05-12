@@ -24,10 +24,15 @@ public class Engine {
 			}
 			p.move(timeSpeed);
 		}
+		removeProjectile();
 	}
 
 	public void collision(Projectile p, Projectile p2, double dist) {
 		if (dist < p.getRadius() / 2 + p2.getRadius() / 2) {
+			if (p2.getMass() < p.getMass() * .5) {
+				p.setMass(p.getMass() + p2.getMass() * .5);
+				p2.setMass(1);
+			}
 			p.setxVel(p.getxVel() * -.9);
 			p.setyVel(p.getyVel() * -.9);
 			p.setxAcc(p.getxAcc() * -.9);
@@ -61,6 +66,15 @@ public class Engine {
 
 	public void addRanProjectile(float x, float y) {
 		addProjectile(new Projectile(Math.pow(6, 14), x, y, 0, 0, 0, 0));
+	}
+
+	public void removeProjectile() {
+		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
+			Projectile p = iter.next();
+			if (p.getMass() == 1) {
+				iter.remove();
+			}
+		}
 	}
 
 	public void removeProjectile(float x, float y) {
