@@ -5,6 +5,7 @@ public class Engine {
 	private ArrayList<Projectile> projectiles;
 	private double timeSpeed;
 	private static final double G = Math.pow(6.673, -11);
+	private static final double EARTHMASS = Math.pow(5.972, 14);
 
 	public Engine() {
 		projectiles = new ArrayList<Projectile>();
@@ -58,14 +59,17 @@ public class Engine {
 	}
 
 	public void addRanProjectile(int width, int height) {
-		addProjectile(new Projectile(Math.pow(9, 10),
+		double mass = Math.random() * 3 + 5;
+		double scale = 12;
+		System.out.println(Math.pow(mass, scale));
+		addProjectile(new Projectile(Math.pow(mass, scale),
 				(float) (Math.random() * width),
 				(float) (Math.random() * height), (float) (Math.random() - .5),
 				(float) (Math.random() - .5), 0, 0));
 	}
 
 	public void addRanProjectile(float x, float y) {
-		addProjectile(new Projectile(Math.pow(6, 14), x, y, 0, 0, 0, 0));
+		addProjectile(new Projectile(EARTHMASS, x, y, 0, 0, 0, 0));
 	}
 
 	public void removeProjectile() {

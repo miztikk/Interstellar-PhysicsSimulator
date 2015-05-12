@@ -10,18 +10,11 @@ public class Display {
 		this.parent = p;
 		debug = true;
 		buttons = new Button[1];
-		
+
 		buttons[0] = new Button("Test", "this is a test button", 550, 100, 30);
 	}
 
 	public void drawScreen(Engine e) {
-		if (debug) {
-			parent.fill(255);
-			parent.textAlign(parent.LEFT);
-			parent.text("DEBUG", 5, 10);
-			parent.text("timeSpeed: " + e.getTimeSpeed() + " projectiles: "
-					+ e.getProjectiles().size(), 5, 20);
-		}
 		for (Projectile p : e.getProjectiles()) {
 			if (debug) {
 				parent.fill(255);
@@ -34,6 +27,13 @@ public class Display {
 		for (Button b : buttons) {
 			b.display(parent);
 		}
+		if (debug) {
+			parent.fill(255);
+			parent.textAlign(parent.LEFT);
+			parent.text("DEBUG", 5, 10);
+			parent.text("timeSpeed: " + e.getTimeSpeed() + " projectiles: "
+					+ e.getProjectiles().size(), 5, 20);
+		}
 	}
 
 	public void determineFill(String type) {
@@ -41,11 +41,11 @@ public class Display {
 		System.out.println(type);
 		if (type.contains("ast"))
 			c = Color.newBrown();
-		if (type.contains("moo"))
+		else if (type.contains("moo"))
 			c = Color.newWhite();
-		if (type.contains("pla"))
+		else if (type.contains("pla"))
 			c = Color.newBlue();
-		if (type.contains("sta"))
+		else if (type.contains("sta"))
 			c = Color.newYellow();
 		else
 			c = Color.newBlack();
@@ -55,8 +55,8 @@ public class Display {
 	public void extractColor(Color c) {
 		parent.fill(c.getR(), c.getG(), c.getB());
 	}
-	
-	public Button[] getButtons()  {
+
+	public Button[] getButtons() {
 		return buttons;
 	}
 

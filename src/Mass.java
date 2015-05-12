@@ -2,6 +2,7 @@ public class Mass {
 	protected double mass;
 	protected String type;
 	protected float x, y, radius;
+	protected static final double SCALE = Math.pow(5.5, 12);
 
 	public Mass(double m, float radius, float x, float y) {
 		mass = m;
@@ -33,20 +34,20 @@ public class Mass {
 	}
 
 	public void updateType() {
-		if (mass < Math.pow(9, 10))
+		if (radius < 10)
 			type = "asteroid";
-		if (mass < Math.pow(6, 14))
+		else if (radius < 20)
 			type = "moon";
-		if (mass < Math.pow(2, 17))
+		else if (radius < 60)
 			type = "planet";
-		if (mass < Math.pow(2, 22))
+		else if (radius < 200)
 			type = "star";
 		else
 			type = "hole";
 	}
 
 	public void updateRadius() {
-		radius = (float) ((mass / 6000.0) / Math.pow(4.3, 8));
+		radius = (float) (mass / SCALE);
 	}
 
 	public float getRadius() {

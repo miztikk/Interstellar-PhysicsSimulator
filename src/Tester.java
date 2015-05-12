@@ -3,12 +3,13 @@ import processing.core.PApplet;
 public class Tester extends PApplet {
 	Display d;
 	Engine e;
+	boolean auto;
 
 	public void setup() {
 		size(600, 600);
 		d = new Display(this);
 		e = new Engine();
-
+		auto = true;
 		d.drawScreen(e);
 	}
 
@@ -33,6 +34,12 @@ public class Tester extends PApplet {
 			d.switchDebug();
 		if (key == 'r' || key == 'R')
 			e.clearProjectiles();
+		if (key == 'a' || key == 'A')
+			auto();
+	}
+	
+	public void auto(){
+		
 	}
 
 	public void mouseReleased() {
