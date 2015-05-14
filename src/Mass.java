@@ -1,12 +1,12 @@
 public class Mass {
 	protected double mass;
 	protected String type;
-	protected float x, y, radius;
+	protected float x, y, diameter;
 	protected static final double SCALE = Math.pow(5.5, 12);
 
-	public Mass(double m, float radius, float x, float y) {
+	public Mass(double m, float diameter, float x, float y) {
 		mass = m;
-		this.radius = radius;
+		this.diameter = diameter;
 		updateType();
 		this.x = x;
 		this.y = y;
@@ -14,7 +14,7 @@ public class Mass {
 
 	public Mass(double m, float x, float y) {
 		mass = m;
-		updateRadius();
+		updateDiameter();
 		updateType();
 		this.x = x;
 		this.y = y;
@@ -26,7 +26,8 @@ public class Mass {
 
 	public void setMass(double mass) {
 		this.mass = mass;
-		updateRadius();
+		updateDiameter();
+		updateType();
 	}
 
 	public String getType() {
@@ -34,28 +35,28 @@ public class Mass {
 	}
 
 	public void updateType() {
-		if (radius < 10)
+		if (diameter < 10)
 			type = "asteroid";
-		else if (radius < 20)
+		else if (diameter < 20)
 			type = "moon";
-		else if (radius < 60)
+		else if (diameter < 80)
 			type = "planet";
-		else if (radius < 200)
+		else if (diameter < 400)
 			type = "star";
 		else
 			type = "hole";
 	}
 
-	public void updateRadius() {
-		radius = (float) (mass / SCALE);
+	public void updateDiameter() {
+		diameter = (float) (mass / SCALE);
 	}
 
-	public float getRadius() {
-		return radius;
+	public float getDiameter() {
+		return diameter;
 	}
 
-	public void setRadius(float radius) {
-		this.radius = radius;
+	public void setDiameter(float diameter) {
+		this.diameter = diameter;
 	}
 
 	public float getX() {

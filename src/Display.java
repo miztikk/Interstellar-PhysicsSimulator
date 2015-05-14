@@ -18,11 +18,11 @@ public class Display {
 		for (Projectile p : e.getProjectiles()) {
 			if (debug) {
 				parent.fill(255);
-				parent.text(p.toString(), p.getX() - p.getRadius(), p.getY()
-						- p.getRadius());
+				parent.text(p.toString(), p.getX() - p.getDiameter(), p.getY()
+						- p.getDiameter());
 			}
 			determineFill(p.getType());
-			parent.ellipse(p.getX(), p.getY(), p.getRadius(), p.getRadius());
+			parent.ellipse(p.getX(), p.getY(), p.getDiameter(), p.getDiameter());
 		}
 		for (Button b : buttons) {
 			b.display(parent);
@@ -38,7 +38,6 @@ public class Display {
 
 	public void determineFill(String type) {
 		Color c = new Color(0, 0, 0);
-		System.out.println(type);
 		if (type.contains("ast"))
 			c = Color.newBrown();
 		else if (type.contains("moo"))

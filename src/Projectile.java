@@ -68,7 +68,7 @@ public class Projectile extends Mass {
 	}
 
 	public String toString() {
-		return "Mass: " + mass + " Radius: " + radius + " (" + Math.round(x)
+		return "Mass: " + mass + " Radius: " + diameter + " (" + Math.round(x)
 				+ "," + Math.round(y) + ") " + Math.round(xVel) + " "
 				+ Math.round(yVel) + " " + Math.round(xAcc) + " "
 				+ Math.round(yAcc);

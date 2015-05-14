@@ -36,10 +36,13 @@ public class Tester extends PApplet {
 			e.clearProjectiles();
 		if (key == 'a' || key == 'A')
 			auto();
+		if (key == 's' || key == 'S')
+			for (int i = 0; i < 10; i++)
+				e.addRanProjectile(width, height);
 	}
-	
-	public void auto(){
-		
+
+	public void auto() {
+
 	}
 
 	public void mouseReleased() {
