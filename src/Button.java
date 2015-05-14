@@ -27,7 +27,7 @@ public class Button {
 			p.fill(255);
 			p.textAlign(p.RIGHT);
 			p.text(description, p.mouseX, p.mouseY);
-		}		
+		}
 }
 
 	public void click(PApplet p) {
@@ -50,6 +50,10 @@ public class Button {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean isClicked() {
+		return clicked;
 	}
 
 	public String getName() {
