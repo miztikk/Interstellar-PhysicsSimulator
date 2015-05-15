@@ -15,7 +15,7 @@ public class Button {
 		fill = 200;
 		clicked = false;
 	}
-	
+
 	public void display(PApplet p) {
 		hover(p);
 		p.fill(fill);
@@ -27,8 +27,8 @@ public class Button {
 			p.fill(255);
 			p.textAlign(p.RIGHT);
 			p.text(description, p.mouseX, p.mouseY);
-		}		
-}
+		}
+	}
 
 	public void click(PApplet p) {
 		// to be instantiated
@@ -50,6 +50,10 @@ public class Button {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean isClicked() {
+		return clicked;
 	}
 
 	public String getName() {

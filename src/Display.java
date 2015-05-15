@@ -9,9 +9,25 @@ public class Display {
 	public Display(PApplet p) {
 		this.parent = p;
 		debug = true;
-		buttons = new Button[1];
+		buttons = new Button[3];
 
-		buttons[0] = new Button("Test", "this is a test button", 550, 100, 30);
+		buttons[0] = new Button("Mass", "create a massive object",
+				p.width - 50, 100, 30) {
+			public void click(PApplet p) {
+
+			}
+		};
+		buttons[1] = new Button("Vector",
+				"change the velocity and direction of an object", p.width - 50,
+				150, 30) {
+
+		};
+		buttons[2] = new Button("Settings",
+				"change game settings like time speed", p.width - 50, 200, 30) {
+			public void click(PApplet p) {
+
+			}
+		};
 	}
 
 	public void drawScreen(Engine e) {
