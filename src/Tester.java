@@ -46,9 +46,17 @@ public class Tester extends PApplet {
 	}
 
 	public void mouseReleased() {
-		if (mouseButton == LEFT)
-			e.addRanProjectile((float) mouseX, (float) mouseY);
-		else
+		if (mouseButton == LEFT) {
+			if (d.isMouseFree()) e.addRanProjectile((float) mouseX, (float) mouseY);
+			for (int i = 0; i < d.getButtons().length; i++) {
+				if (d.getButtons()[i].isHovering(this)) {
+					d.setClickedIndex(i);
+					d.getButtons()[i].toggleClicked();
+				}
+			}
+		}
+		if (mouseButton == RIGHT) {
 			e.removeProjectile((float) mouseX, (float) mouseY);
+		}
 	}
 }

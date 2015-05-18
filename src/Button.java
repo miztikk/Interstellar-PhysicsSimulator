@@ -35,21 +35,24 @@ public class Button {
 	}
 
 	public void hover(PApplet p) {
-		if (isHovering(p) && clicked) {
-			fill = 150;
+		if (clicked) {
+			fill = 100;
 		} else if (isHovering(p)) {
-			fill = 175;
+			fill = 150;
 		} else {
 			fill = 200;
 		}
 	}
 
 	public boolean isHovering(PApplet p) {
-		if (p.mouseX >= x && p.mouseX <= x + size && p.mouseY >= y
-				&& p.mouseY <= y + size) {
+		if (p.mouseX >= x && p.mouseX <= x + size && p.mouseY >= y && p.mouseY <= y + size) {
 			return true;
 		}
 		return false;
+	}
+	
+	public void toggleClicked() {
+		clicked = !clicked;
 	}
 
 	public boolean isClicked() {
@@ -102,5 +105,9 @@ public class Button {
 
 	public void setFill(int fill) {
 		this.fill = fill;
+	}
+
+	public void setClicked(boolean clicked) {
+		this.clicked = clicked;
 	}
 }
