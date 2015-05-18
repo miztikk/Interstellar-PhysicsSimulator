@@ -11,6 +11,10 @@ public class Color {
 		return new Color(165, 42, 42);
 	}
 
+	public static Color newOrange() {
+		return new Color(255, 69, 0);
+	}
+
 	public static Color newWhite() {
 		return new Color(255, 255, 255);
 	}
@@ -49,5 +53,5 @@ public class Color {
 
 	public void setB(int b) {
 		this.b = b;
-	} 
+	}
 }

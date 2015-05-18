@@ -6,7 +6,7 @@ public class Engine {
 	private ArrayList<Projectile> temp;
 	private double timeSpeed;
 	private static final double G = Math.pow(6.673, -11);
-	private static final double EARTHMASS = Math.pow(5.972, 14);
+	private static final double EARTHMASS = Math.pow(5.972, 13);
 
 	public Engine() {
 		projectiles = new ArrayList<Projectile>();
@@ -52,10 +52,6 @@ public class Engine {
 				* (p.getMass() / p2.getMass()));
 		p2.setyVel((p2.getyVel() + p.getyVel()) / 2
 				* (p.getMass() / p2.getMass()));
-		p2.setxAcc((p2.getxAcc() + p.getxAcc()) / 2
-				* (p.getMass() / p2.getMass()));
-		p2.setyAcc((p2.getyAcc() + p.getyAcc()) / 2
-				* (p.getMass() / p2.getMass()));
 		p.setMass(1);
 	}
 
@@ -78,6 +74,7 @@ public class Engine {
 		temp.clear();
 	}
 
+	// For button presses
 	public void addRanProjectile(int width, int height) {
 		double mass = Math.random() * 2 + 6;
 		double scale = 12;
@@ -89,6 +86,7 @@ public class Engine {
 						(float) (Math.random() * 2 - 1), 0, 0), projectiles);
 	}
 
+	// For collisions
 	public void addRanProjectile(double m, float x, float y, double xv,
 			double yv, float d) {
 		addProjectile(
@@ -98,6 +96,7 @@ public class Engine {
 								+ Math.random() * yv - yv / 2), 0, 0), temp);
 	}
 
+	// For Clicking
 	public void addRanProjectile(float mouseX, float mouseY) {
 		addProjectile(new Projectile(EARTHMASS, mouseX, mouseY, 0, 0, 0, 0),
 				projectiles);

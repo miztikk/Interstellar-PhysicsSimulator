@@ -1,6 +1,6 @@
 public class Mass {
 	protected double mass;
-	protected String type;
+	protected int type;
 	protected float x, y, diameter;
 	protected static final double SCALE = Math.pow(5.5, 12);
 
@@ -30,21 +30,23 @@ public class Mass {
 		updateType();
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
 	public void updateType() {
-		if (diameter < 10)
-			type = "asteroid";
-		else if (diameter < 20)
-			type = "moon";
-		else if (diameter < 80)
-			type = "planet";
-		else if (diameter < 400)
-			type = "star";
-		else
-			type = "hole";
+		if (type >= 0 && diameter < 10)
+			this.type = 1;
+		else if (type >= 0 && diameter < 20)
+			this.type = 2;
+		else if (type >= 0 && diameter < 80)
+			this.type = 3;
+		else if (type <= 0 && diameter < 400)
+			this.type = -1;
+		else if (type <= 0 && diameter < 800)
+			this.type = -2;
+		else if (diameter >= 800)
+			this.type = -3;
 	}
 
 	public void updateDiameter() {

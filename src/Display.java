@@ -52,16 +52,18 @@ public class Display {
 		}
 	}
 
-	public void determineFill(String type) {
+	public void determineFill(int type) {
 		Color c = new Color(0, 0, 0);
-		if (type.contains("ast"))
+		if (type == 1)
 			c = Color.newBrown();
-		else if (type.contains("moo"))
+		else if (type == 2)
 			c = Color.newWhite();
-		else if (type.contains("pla"))
+		else if (type == 3)
 			c = Color.newBlue();
-		else if (type.contains("sta"))
+		else if (type == -1)
 			c = Color.newYellow();
+		else if (type == -2)
+			c = Color.newOrange();
 		else
 			c = Color.newBlack();
 		extractColor(c);
