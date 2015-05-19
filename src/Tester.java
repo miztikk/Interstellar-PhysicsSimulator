@@ -22,10 +22,10 @@ public class Tester extends PApplet {
 	public void keyReleased() {
 		if (key == CODED) {
 			if (keyCode == LEFT) {
-				e.changeTimeSpeed((float) -0.1);
+				e.changeTimeSpeed(-0.1);
 			}
 			if (keyCode == RIGHT) {
-				e.changeTimeSpeed((float) 0.1);
+				e.changeTimeSpeed(0.1);
 			}
 		}
 		if (key == ' ')
@@ -47,7 +47,8 @@ public class Tester extends PApplet {
 
 	public void mouseReleased() {
 		if (mouseButton == LEFT) {
-			if (d.isMouseFree()) d.getButtons()[d.getClickedIndex()].click(this, e);
+			if (d.isMouseFree())
+				d.getButtons()[d.getClickedIndex()].click(this, e);
 			for (int i = 0; i < d.getButtons().length; i++) {
 				if (d.getButtons()[i].isHovering(this)) {
 					d.setClickedIndex(i);

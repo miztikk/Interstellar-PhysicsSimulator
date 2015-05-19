@@ -13,15 +13,19 @@ public class Display {
 		debug = true;
 		buttons = new Button[3];
 
-		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30) {
+		buttons[0] = new Button("Mass", "create a massive object",
+				p.width - 50, 100, 30) {
 			public void click(PApplet p, Engine e) {
-				e.addRanProjectile(p.mouseX, p.mouseY);
+				e.addRanProjectile((float) p.mouseX, (float) p.mouseY);
 			}
 		};
-		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30) {
+		buttons[1] = new Button("Vector",
+				"change the velocity and direction of an object", p.width - 50,
+				150, 30) {
 
 		};
-		buttons[2] = new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30) {
+		buttons[2] = new Button("Settings",
+				"change game settings like time speed", p.width - 50, 200, 30) {
 			public void click(PApplet p) {
 
 			}
@@ -32,12 +36,14 @@ public class Display {
 		for (Projectile p : e.getProjectiles()) {
 			if (debug) {
 				parent.fill(255);
-				parent.text(p.toString(), p.getX() - p.getDiameter(), p.getY() - p.getDiameter());
+				parent.text(p.toString(), p.getX() - p.getDiameter(), p.getY()
+						- p.getDiameter());
 			}
 			determineFill(p.getType());
 			parent.ellipse(p.getX(), p.getY(), p.getDiameter(), p.getDiameter());
 		}
 		for (int i = 0; i < buttons.length; i++) {
+			buttons[i].setX(parent.width - 50);
 			if (buttons[i].isClicked() && i != clickedIndex) {
 				buttons[i].setClicked(false);
 			}
@@ -51,10 +57,11 @@ public class Display {
 					+ e.getProjectiles().size(), 5, 20);
 		}
 	}
-	
+
 	public boolean isMouseFree() {
 		for (Button b : buttons) {
-			if (b.isHovering(parent)) return false;
+			if (b.isHovering(parent))
+				return false;
 		}
 		return true;
 	}
@@ -83,11 +90,11 @@ public class Display {
 	public Button[] getButtons() {
 		return buttons;
 	}
-	
+
 	public int getClickedIndex() {
 		return clickedIndex;
 	}
-	
+
 	public void setClickedIndex(int clickedIndex) {
 		this.clickedIndex = clickedIndex;
 	}

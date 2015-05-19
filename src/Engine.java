@@ -43,15 +43,15 @@ public class Engine {
 
 	public void collide(Projectile p, Projectile p2) {
 		int limit = (int) (Math.random() * 9) + 1;
-		p2.setMass(p2.getMass() + p.getMass() * .25);
 		if (p.getMass() > p2.getMass() * .5)
 			for (int i = 0; i < limit; i++)
 				addRanProjectile(p.getMass() * .5 / limit, p.getX(), p.getY(),
 						p2.getxVel(), p2.getyVel(), p.getDiameter());
-		p2.setxVel((p2.getxVel() + p.getxVel()) / 2
-				* (p.getMass() / p2.getMass()));
-		p2.setyVel((p2.getyVel() + p.getyVel()) / 2
-				* (p.getMass() / p2.getMass()));
+		p2.setxVel(.9 * (p2.getxVel() + (p.getxVel() * (p.getMass() / p2
+				.getMass()))));
+		p2.setyVel(.9 * (p2.getyVel() + (p.getyVel() * (p.getMass() / p2
+				.getMass()))));
+		p2.setMass(p2.getMass() + p.getMass() * .25);
 		p.setMass(1);
 	}
 
