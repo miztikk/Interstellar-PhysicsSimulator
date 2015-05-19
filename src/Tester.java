@@ -6,8 +6,8 @@ public class Tester extends PApplet {
 	boolean auto;
 
 	public void setup() {
-		size(600, 600);
-		d = new Display(this);
+		size(900, 900);
+		d = new Display(this, e);
 		e = new Engine();
 		auto = true;
 		d.drawScreen(e);
@@ -47,7 +47,7 @@ public class Tester extends PApplet {
 
 	public void mouseReleased() {
 		if (mouseButton == LEFT) {
-			if (d.isMouseFree()) e.addRanProjectile((float) mouseX, (float) mouseY);
+			if (d.isMouseFree()) d.getButtons()[d.getClickedIndex()].click(this, e);
 			for (int i = 0; i < d.getButtons().length; i++) {
 				if (d.getButtons()[i].isHovering(this)) {
 					d.setClickedIndex(i);

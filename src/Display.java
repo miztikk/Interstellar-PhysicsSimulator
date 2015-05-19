@@ -2,19 +2,20 @@ import processing.core.PApplet;
 
 public class Display {
 	private PApplet parent;
+	private Engine engine;
 	private Button[] buttons;
 	private boolean debug;
 	private int clickedIndex;
 
-	public Display(PApplet p) {
+	public Display(PApplet p, Engine e) {
 		this.parent = p;
+		this.engine = e;
 		debug = true;
 		buttons = new Button[3];
 
-		buttons[0] = new Button("Mass", "create a massive object",
-				p.width - 50, 100, 30) {
-			public void click(PApplet p) {
-
+		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30) {
+			public void click(PApplet p, Engine e) {
+				e.addRanProjectile(p.mouseX, p.mouseY);
 			}
 		};
 		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30) {

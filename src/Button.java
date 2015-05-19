@@ -28,9 +28,12 @@ public class Button {
 			p.textAlign(p.RIGHT);
 			p.text(description, p.mouseX, p.mouseY);
 		}
+		if (isClicked()) {
+			
+		}
 	}
 
-	public void click(PApplet p) {
+	public void click(PApplet p, Engine e) {
 		// to be instantiated
 	}
 
