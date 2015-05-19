@@ -9,7 +9,7 @@ public class Tester extends PApplet {
 		size(900, 900);
 		d = new Display(this, e);
 		e = new Engine();
-		auto = true;
+		auto = false;
 		d.drawScreen(e);
 	}
 
@@ -17,6 +17,8 @@ public class Tester extends PApplet {
 		background(0);
 		e.simulate();
 		d.drawScreen(e);
+		if (auto)
+			auto();
 	}
 
 	public void keyReleased() {
@@ -35,14 +37,16 @@ public class Tester extends PApplet {
 		if (key == 'r' || key == 'R')
 			e.clearProjectiles();
 		if (key == 'a' || key == 'A')
-			auto();
+			auto = !auto;
 		if (key == 's' || key == 'S')
 			for (int i = 0; i < 10; i++)
 				e.addRanProjectile(width, height);
 	}
 
 	public void auto() {
-
+		if (Math.random() < .02)
+			e.addRanProjectile(width, height);
+		text("Auto", width - 50, 10);
 	}
 
 	public void mouseReleased() {
