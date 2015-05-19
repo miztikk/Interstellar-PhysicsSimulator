@@ -31,6 +31,14 @@ public class Color {
 		return new Color(0, 0, 0);
 	}
 
+	public static Color newDarkBrown() {
+		return new Color(160, 82, 55);
+	}
+
+	public static Color newGrey() {
+		return new Color(150, 150, 150);
+	}
+
 	public static Color searchColor(int type) {
 		if (type == 1)
 			return Color.newBrown();
@@ -38,10 +46,14 @@ public class Color {
 			return Color.newWhite();
 		else if (type == 3)
 			return Color.newBlue();
+		else if (type == 4)
+			return Color.newDarkBrown();
 		else if (type == -1)
 			return Color.newYellow();
 		else if (type == -2)
 			return Color.newOrange();
+		else if (type == -4)
+			return Color.newGrey();
 		else
 			return Color.newBlack();
 	}

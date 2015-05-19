@@ -4,12 +4,14 @@ public class Tester extends PApplet {
 	Display d;
 	Engine e;
 	boolean auto;
+	double autoChance;
 
 	public void setup() {
 		size(900, 900);
 		d = new Display(this, e);
 		e = new Engine();
 		auto = false;
+		autoChance = .01;
 		d.drawScreen(e);
 	}
 
@@ -23,12 +25,10 @@ public class Tester extends PApplet {
 
 	public void keyReleased() {
 		if (key == CODED) {
-			if (keyCode == LEFT) {
+			if (keyCode == LEFT)
 				e.changeTimeSpeed(-0.1);
-			}
-			if (keyCode == RIGHT) {
+			if (keyCode == RIGHT)
 				e.changeTimeSpeed(0.1);
-			}
 		}
 		if (key == ' ')
 			e.addRanProjectile(width, height);
@@ -44,7 +44,7 @@ public class Tester extends PApplet {
 	}
 
 	public void auto() {
-		if (Math.random() < .02)
+		if (Math.random() < autoChance)
 			e.addRanProjectile(width, height);
 		text("Auto", width - 50, 10);
 	}

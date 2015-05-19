@@ -6,7 +6,7 @@ public class Engine {
 	private ArrayList<Projectile> temp;
 	private double timeSpeed;
 	private static final double G = Math.pow(6.673, -11);
-	private static final double EARTHMASS = Math.pow(5.972, 13);
+	private static final double EARTHMASS = Math.pow(5.972, 14) / 2;
 
 	public Engine() {
 		projectiles = new ArrayList<Projectile>();
@@ -40,6 +40,7 @@ public class Engine {
 		}
 	}
 
+	// p2 is the larger mass
 	public void collide(Projectile p, Projectile p2) {
 		int limit = (int) (Math.random() * 9) + 1;
 		if (p.getMass() > p2.getMass() * .5)
@@ -98,12 +99,13 @@ public class Engine {
 								+ Math.random() * yv - yv / 2), 0, 0), temp);
 	}
 
-	// For Clicking
+	// For clicking
 	public void addRanProjectile(float mouseX, float mouseY) {
 		addProjectile(new Projectile(EARTHMASS, mouseX, mouseY, 0, 0, 0, 0),
 				projectiles);
 	}
 
+	// For tiny masses
 	public void removeProjectiles() {
 		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
 			Projectile p = iter.next();
@@ -112,6 +114,7 @@ public class Engine {
 		}
 	}
 
+	// For collisions
 	public void removeProjectile(float x, float y) {
 		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
 			Projectile p = iter.next();
