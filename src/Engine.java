@@ -15,7 +15,6 @@ public class Engine {
 	}
 
 	public void simulate() {
-
 		for (Projectile p : projectiles) {
 			for (Projectile p2 : projectiles) {
 				if (p != p2) {
@@ -56,12 +55,15 @@ public class Engine {
 	}
 
 	public double gravAttraction(Projectile p, Projectile p2, double dist) {
-		double force = G * p.getMass() * p2.getMass() / (dist * dist);
-		double acc = force / p.getMass();
-		double ang = Math.atan2(p2.getY() - p.getY(), p2.getX() - p.getX());
-		p.changexAcc(acc * Math.cos(ang) * timeSpeed);
-		p.changeyAcc(acc * Math.sin(ang) * timeSpeed);
-		return force;
+		if (dist != 0) {
+			double force = G * p.getMass() * p2.getMass() / (dist * dist);
+			double acc = force / p.getMass();
+			double ang = Math.atan2(p2.getY() - p.getY(), p2.getX() - p.getX());
+			p.changexAcc(acc * Math.cos(ang) * timeSpeed);
+			p.changeyAcc(acc * Math.sin(ang) * timeSpeed);
+			return force;
+		}
+		return 0;
 	}
 
 	public void addProjectile(Projectile m, ArrayList<Projectile> list) {
