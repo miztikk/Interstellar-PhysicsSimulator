@@ -31,6 +31,21 @@ public class Color {
 		return new Color(0, 0, 0);
 	}
 
+	public static Color searchColor(int type) {
+		if (type == 1)
+			return Color.newBrown();
+		else if (type == 2)
+			return Color.newWhite();
+		else if (type == 3)
+			return Color.newBlue();
+		else if (type == -1)
+			return Color.newYellow();
+		else if (type == -2)
+			return Color.newOrange();
+		else
+			return Color.newBlack();
+	}
+
 	public int getR() {
 		return r;
 	}

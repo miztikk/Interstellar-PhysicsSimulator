@@ -67,20 +67,7 @@ public class Display {
 	}
 
 	public void determineFill(int type) {
-		Color c = new Color(0, 0, 0);
-		if (type == 1)
-			c = Color.newBrown();
-		else if (type == 2)
-			c = Color.newWhite();
-		else if (type == 3)
-			c = Color.newBlue();
-		else if (type == -1)
-			c = Color.newYellow();
-		else if (type == -2)
-			c = Color.newOrange();
-		else
-			c = Color.newBlack();
-		extractColor(c);
+		extractColor(Color.searchColor(type));
 	}
 
 	public void extractColor(Color c) {
