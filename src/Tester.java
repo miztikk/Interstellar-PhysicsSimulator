@@ -5,6 +5,7 @@ public class Tester extends PApplet {
 	Engine e;
 	boolean auto;
 	double autoChance;
+	boolean paused;
 
 	public void setup() {
 		size(900, 900);
@@ -13,14 +14,18 @@ public class Tester extends PApplet {
 		auto = false;
 		autoChance = .01;
 		d.drawScreen(e);
+		paused = false;
 	}
 
 	public void draw() {
-		background(0);
-		e.simulate();
-		d.drawScreen(e);
-		if (auto)
-			auto();
+		if (!paused) {
+			background(0);
+			e.simulate();
+			d.drawScreen(e);
+			if (auto)
+				auto();
+		} else
+			text("PAUSED", width - width / 2, 10);
 	}
 
 	public void keyReleased() {
@@ -38,6 +43,8 @@ public class Tester extends PApplet {
 			e.clearProjectiles();
 		if (key == 'a' || key == 'A')
 			auto = !auto;
+		if (key == 'p' || key == 'P')
+			paused = !paused;
 		if (key == 's' || key == 'S')
 			for (int i = 0; i < 10; i++)
 				e.addRanProjectile(width, height);
