@@ -44,14 +44,14 @@ public class Mass {
 			this.type = 3;
 		else if (type >= 1 && diameter < 800)
 			this.type = 4;
-		else if (type <= 0 && diameter < 200)
-			this.type = -4;
 		else if (type <= 0 && diameter < 400)
 			this.type = -1;
 		else if (type <= 0 && diameter < 800)
 			this.type = -2;
 		else if (diameter >= 800)
 			this.type = -3;
+		else if (type <= 0 && diameter < 200)
+			this.type = -4;
 	}
 
 	public void updateDiameter() {
