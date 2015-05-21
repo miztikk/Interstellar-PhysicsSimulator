@@ -1,28 +1,41 @@
 import processing.core.PApplet;
 
 public class Button {
-	private String name, description;
-	private float x, y;
-	private int size, fill;
-	boolean clicked;
+	protected String name, description;
+	protected float x, y;
+	protected int w, l, fill;
+	protected boolean clicked;
 
 	public Button(String n, String d, int x, int y, int s) {
 		name = n;
 		description = d;
 		this.x = x;
 		this.y = y;
-		size = s;
+		w = s;
+		l = s;
+		fill = 200;
+		clicked = false;
+	}
+	
+	public Button(String n, String d, int x, int y, int w, int l) {
+		name = n;
+		description = d;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.l = l;
 		fill = 200;
 		clicked = false;
 	}
 
+
 	public void display(PApplet p) {
 		hover(p);
 		p.fill(fill);
-		p.rect(x, y, size, size);
+		p.rect(x, y, w, l);
 		p.fill(255);
 		p.textAlign(p.LEFT, p.TOP);
-		p.text(name, x, y + size);
+		p.text(name, x, y + l);
 		if (isHovering(p)) {
 			p.fill(255);
 			p.textAlign(p.RIGHT);
@@ -48,7 +61,7 @@ public class Button {
 	}
 
 	public boolean isHovering(PApplet p) {
-		if (p.mouseX >= x && p.mouseX <= x + size && p.mouseY >= y && p.mouseY <= y + size) {
+		if (p.mouseX >= x && p.mouseX <= x + w && p.mouseY >= y && p.mouseY <= y + l) {
 			return true;
 		}
 		return false;
@@ -94,12 +107,30 @@ public class Button {
 		this.y = y;
 	}
 
-	public int getSize() {
-		return size;
+	public int getW() {
+		return w;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
+	public void setW(int w) {
+		this.w = w;
+	}
+
+	public int getL() {
+		return l;
+	}
+
+	public void setL(int l) {
+		this.l = l;
+	}
+	
+	public int getSize() {
+		if (w == l) return w;
+		else return 0;
+	}
+	
+	public void setSize(int s) {
+		this.w = s;
+		this.l = s;
 	}
 
 	public int getFill() {
