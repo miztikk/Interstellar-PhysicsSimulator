@@ -6,7 +6,7 @@ public class Button {
 	protected int w, l, fill;
 	protected boolean clicked;
 
-	public Button(String n, String d, int x, int y, int s) {
+	public Button(String n, String d, float x, float y, int s) {
 		name = n;
 		description = d;
 		this.x = x;
@@ -17,7 +17,7 @@ public class Button {
 		clicked = false;
 	}
 	
-	public Button(String n, String d, int x, int y, int w, int l) {
+	public Button(String n, String d, float x, float y, int w, int l) {
 		name = n;
 		description = d;
 		this.x = x;

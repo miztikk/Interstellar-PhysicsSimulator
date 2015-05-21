@@ -36,9 +36,29 @@ public class InputFrame extends Button{
 		}
 	}
 	
+	public void init() {
+		int index = 0;
+		for(int i = (int) (y + BORDER_SIZE); i < y + l; i += BUTTON_SIZE + (BORDER_SIZE * 2)) {
+			buttons[index] = new Button("", "decreases value of parameter " + inputNames[index], x + BORDER_SIZE, i, BUTTON_SIZE){
+				public void click(PApplet p, Engine e) {
+					
+				}
+			};
+			index++;
+			buttons[index] = new Button("", "increases value of parameter " + inputNames[index], x + BORDER_SIZE + (BUTTON_SIZE * 2), i, BUTTON_SIZE){
+				public void click(PApplet p, Engine e) {
+					
+				}
+			};
+			if (index < buttons.length) index++;
+		}
+	}
+	
 	public void display(PApplet p) {
-		p.fill(200);
+		p.fill(175);
 		p.rect(x, y, w, l);
-		
+		for(Button b : buttons) {
+			b.display(p);
+		}
 	}
 }
