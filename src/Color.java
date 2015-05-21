@@ -11,10 +11,6 @@ public class Color {
 		return new Color(165, 42, 42);
 	}
 
-	public static Color newOrange() {
-		return new Color(255, 69, 0);
-	}
-
 	public static Color newWhite() {
 		return new Color(255, 255, 255);
 	}
@@ -23,20 +19,24 @@ public class Color {
 		return new Color(0, 0, 255);
 	}
 
-	public static Color newYellow() {
-		return new Color(255, 255, 0);
-	}
-
-	public static Color newBlack() {
-		return new Color(0, 0, 0);
-	}
-
 	public static Color newDarkBrown() {
 		return new Color(160, 82, 55);
 	}
 
 	public static Color newGrey() {
 		return new Color(150, 150, 150);
+	}
+
+	public static Color newYellow() {
+		return new Color(255, 255, 0);
+	}
+
+	public static Color newOrange() {
+		return new Color(255, 69, 0);
+	}
+
+	public static Color newBlack() {
+		return new Color(0, 0, 0);
 	}
 
 	public static Color searchColor(int type) {
