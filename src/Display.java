@@ -11,7 +11,7 @@ public class Display {
 		this.parent = p;
 		this.engine = e;
 		debug = true;
-		buttons = new Button[3];
+		buttons = new Button[4];
 
 		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30) {
 			public void click(PApplet p, Engine e) {
@@ -28,6 +28,12 @@ public class Display {
 				
 			}
 		};
+		buttons[3] = new Button("Test", "this is a test button", p.width - 50, 250, 30) {
+			public void click(PApplet p, Engine e) {
+				
+			}
+		};
+		buttons[3].addInputFrame(4, 80, 100);
 	}
 
 	public void drawScreen(Engine e) {

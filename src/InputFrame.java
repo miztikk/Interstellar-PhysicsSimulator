@@ -10,8 +10,9 @@ public class InputFrame extends Button{
 	private Button[] buttons;
 	private String[] inputNames;
 	
-	public InputFrame(int numInputs, int x, int y, int w, int l) {
-		super("", "", x, y, w, l);
+	public InputFrame(int numInputs, int x, int y) {
+		super("", "", x, y, 0, 0);
+		
 		inputs = new int[numInputs];
 		inputNames = new String[numInputs];
 		buttons = new Button[numInputs * 2];
@@ -19,20 +20,11 @@ public class InputFrame extends Button{
 		super.setW((BORDER_SIZE * 2) + (BUTTON_SIZE * 3));
 		super.setL( ((BORDER_SIZE * 2) * inputs.length) + (BUTTON_SIZE * inputs.length) );
 		
-		int index = 0;
-		for(int i = y + BORDER_SIZE; i < y + l; i += BUTTON_SIZE + (BORDER_SIZE * 2)) {
-			buttons[index] = new Button("", "decreases value of parameter " + inputNames[index], x + BORDER_SIZE, i, BUTTON_SIZE){
-				public void click(PApplet p, Engine e) {
-					
-				}
-			};
-			index++;
-			buttons[index] = new Button("", "increases value of parameter " + inputNames[index], x + BORDER_SIZE + (BUTTON_SIZE * 2), i, BUTTON_SIZE){
-				public void click(PApplet p, Engine e) {
-					
-				}
-			};
-			if (index < buttons.length) index++;
+		for (int i : inputs) {
+			i = 0;
+		}
+		for(int i = 0; i < inputNames.length; i++) {
+			inputNames[i] = "Input " + i;
 		}
 	}
 	
@@ -44,7 +36,7 @@ public class InputFrame extends Button{
 					
 				}
 			};
-			index++;
+			if (index < buttons.length) index++;
 			buttons[index] = new Button("", "increases value of parameter " + inputNames[index], x + BORDER_SIZE + (BUTTON_SIZE * 2), i, BUTTON_SIZE){
 				public void click(PApplet p, Engine e) {
 					
@@ -55,6 +47,7 @@ public class InputFrame extends Button{
 	}
 	
 	public void display(PApplet p) {
+		init();
 		p.fill(175);
 		p.rect(x, y, w, l);
 		for(Button b : buttons) {

@@ -5,6 +5,8 @@ public class Button {
 	protected float x, y;
 	protected int w, l, fill;
 	protected boolean clicked;
+	
+	private InputFrame inputFrame;
 
 	public Button(String n, String d, float x, float y, int s) {
 		name = n;
@@ -15,6 +17,8 @@ public class Button {
 		l = s;
 		fill = 200;
 		clicked = false;
+		
+		inputFrame = null;
 	}
 	
 	public Button(String n, String d, float x, float y, int w, int l) {
@@ -41,8 +45,8 @@ public class Button {
 			p.textAlign(p.RIGHT);
 			p.text(description, p.mouseX, p.mouseY);
 		}
-		if (isClicked()) {
-			
+		if (isClicked() && inputFrame != null) {
+			inputFrame.display(p);
 		}
 	}
 
@@ -65,6 +69,14 @@ public class Button {
 			return true;
 		}
 		return false;
+	}
+	
+	public void addInputFrame(InputFrame frame) {
+		inputFrame = frame;
+	}
+	
+	public void addInputFrame(int numInputs, int x, int y) {
+		inputFrame = new InputFrame(numInputs, x, y);
 	}
 	
 	public void toggleClicked() {
