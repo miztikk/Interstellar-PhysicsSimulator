@@ -4,11 +4,10 @@ public class Button {
 	protected String name, description;
 	protected float x, y;
 	protected int w, l, fill;
-	protected boolean clicked;
-	
+	protected boolean clicked, toggled;
 	private InputFrame inputFrame;
 
-	public Button(String n, String d, float x, float y, int s) {
+	public Button(String n, String d, float x, float y, int s, boolean toggle) {
 		name = n;
 		description = d;
 		this.x = x;
@@ -17,11 +16,11 @@ public class Button {
 		l = s;
 		fill = 200;
 		clicked = false;
-		
+		toggled = toggle; //true = toggle enabled
 		inputFrame = null;
 	}
 	
-	public Button(String n, String d, float x, float y, int w, int l) {
+	public Button(String n, String d, float x, float y, int w, int l, boolean toggle) {
 		name = n;
 		description = d;
 		this.x = x;
@@ -30,6 +29,8 @@ public class Button {
 		this.l = l;
 		fill = 200;
 		clicked = false;
+		toggled = toggle;
+		inputFrame = null;
 	}
 
 

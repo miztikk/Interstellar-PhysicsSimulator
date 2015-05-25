@@ -13,22 +13,22 @@ public class Display {
 		debug = true;
 		buttons = new Button[4];
 
-		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30) {
+		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
 			public void click(PApplet p, Engine e) {
 				e.addRanProjectile((float) p.mouseX, (float) p.mouseY);
 			}
 		};
-		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30) {
+		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
 		};
-		buttons[2] = new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30) {
+		buttons[2] = new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
 		};
-		buttons[3] = new Button("Test", "this is a test button", p.width - 50, 250, 30) {
+		buttons[3] = new Button("Test", "this is a test button", p.width - 50, 250, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
