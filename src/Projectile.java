@@ -18,13 +18,13 @@ public class Projectile extends Mass {
 		xAcc = xA;
 		yAcc = yA;
 	}
-	
-	public Projectile(double m, float r, float x, float y) {
-		super(m, r, x, y);
-			xVel = 0;
-			yVel = 0;
-			xAcc = 0;
-			yAcc = 0;
+
+	public Projectile(double m, float x, float y) {
+		super(m, x, y);
+		xVel = 0;
+		yVel = 0;
+		xAcc = 0;
+		yAcc = 0;
 	}
 
 	public void move(double timeSpeed) {

@@ -16,15 +16,17 @@ public class Display {
 		debug = false;
 		buttons = new ArrayList<Button>();
 
-		buttons.add(new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
+		buttons.add(new Button("Mass", "create a massive object", p.width - 50,
+				100, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.addProjectile(inputFrame.getInputs()[0], inputFrame.getInputs()[1], p.mouseX, p.mouseY);
+				e.addProjectile(inputFrame.getInputs()[0], p.mouseX, p.mouseY);
 			}
+
 			public void init() {
 				addInputFrame(2, 20, 100);
-				String[] names = {"Mass", "Radius"};
+				String[] names = { "Mass", "Radius" };
 				inputFrame.setInputNames(names);
-				float[] inputs = {400000, 100};
+				float[] inputs = { (float) Engine.EARTHMASS, 100 };
 				inputFrame.setInputs(inputs);
 				inputFrame.init();
 			}
@@ -37,14 +39,14 @@ public class Display {
 				addInputFrame(1, 20, 100);
 				String[] names = {"Scale"};
 				inputFrame.setInputNames(names);
-				float[] inputs = {1};
+				float[] inputs = { 1 };
 				inputFrame.setInputs(inputs);
 				inputFrame.init();
 			}
 		});
 		buttons.add(new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
 			public void click(PApplet p, Engine e) {
-				
+
 			}
 			public void init() {
 				addInputFrame(1, 20, 100);
@@ -77,8 +79,7 @@ public class Display {
 			buttons.get(i).display(parent);
 		}
 		if (debug) {
-			
-			
+
 			parent.fill(255);
 			parent.textAlign(parent.LEFT);
 			parent.textSize(DEFAULT_TEXT_SIZE);

@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 public class Engine {
 	private ArrayList<Projectile> projectiles;
 	private ArrayList<Projectile> temp;
 	private double timeSpeed;
 	private static final double G = Math.pow(6.673, -11);
-	private static final double EARTHMASS = Math.pow(5.972, 14) / 2;
+	public static final double EARTHMASS = Math.pow(5.972, 14) / 2;
 
 	public Engine() {
 		projectiles = new ArrayList<Projectile>();
@@ -31,12 +30,12 @@ public class Engine {
 		addProjectiles();
 		removeProjectiles();
 	}
-	
+
 	public void vector(float scale, float x1, float y1, float x2, float y2) {
-		if(!isMouseFree(x1, y1)) {
-			double hyp = Math.tan( (y2 - y1)/(x2 - x1) );
-			projectileAt(x1, y1).setxVel(scale * Math.cos((x2 - x1)/hyp));
-			projectileAt(x1, y1).setyVel(scale * Math.sin((y2 - y1)/hyp));
+		if (!isMouseFree(x1, y1)) {
+			double hyp = Math.tan((y2 - y1) / (x2 - x1));
+			projectileAt(x1, y1).setxVel(scale * Math.cos((x2 - x1) / hyp));
+			projectileAt(x1, y1).setyVel(scale * Math.sin((y2 - y1) / hyp));
 		}
 	}
 
@@ -75,14 +74,15 @@ public class Engine {
 		}
 		return 0;
 	}
-	
-	public void addProjectile(double m, float r, float x, float y) {
-		projectiles.add(new Projectile(m, r, x, y));
+
+	public void addProjectile(double m, float x, float y) {
+		projectiles.add(new Projectile(m, x, y));
 	}
-	
+
 	public void addProjectile(Projectile newProjectile) {
 		projectiles.add(newProjectile);
 	}
+
 	public void addProjectile(Projectile m, ArrayList<Projectile> list) {
 		list.add(m);
 	}
@@ -140,23 +140,25 @@ public class Engine {
 			}
 		}
 	}
-	
+
 	public boolean isMouseFree(float x, float y) {
 		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
 			Projectile projectile = iter.next();
-			if (Math.sqrt((x - projectile.getX()) * (x - projectile.getX()) + (y - projectile.getY())
-					* (y - projectile.getY())) < projectile.getDiameter() / 2) {
+			if (Math.sqrt((x - projectile.getX()) * (x - projectile.getX())
+					+ (y - projectile.getY()) * (y - projectile.getY())) < projectile
+					.getDiameter() / 2) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	public Projectile projectileAt(float x, float y) {
 		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
 			Projectile projectile = iter.next();
-			if (Math.sqrt((x - projectile.getX()) * (x - projectile.getX()) + (y - projectile.getY())
-					* (y - projectile.getY())) < projectile.getDiameter() / 2) {
+			if (Math.sqrt((x - projectile.getX()) * (x - projectile.getX())
+					+ (y - projectile.getY()) * (y - projectile.getY())) < projectile
+					.getDiameter() / 2) {
 				return projectile;
 			}
 		}
