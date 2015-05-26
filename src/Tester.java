@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 
+@SuppressWarnings("serial")
 public class Tester extends PApplet {
 	Display d;
 	Engine e;
@@ -15,6 +16,10 @@ public class Tester extends PApplet {
 		autoChance = .01;
 		d.drawScreen(e);
 		paused = false;
+		
+		for(Button b : d.getButtons()) {
+			b.init();
+		}
 	}
 
 	public void draw() {
@@ -58,7 +63,7 @@ public class Tester extends PApplet {
 
 	public void mouseReleased() {
 		if (mouseButton == LEFT) {
-			if (d.isMouseFree())
+			if (d.isMouseFree() && e.isMouseFree(mouseX, mouseY))
 				d.getButtons()[d.getClickedIndex()].click(this, e);
 			for (int i = 0; i < d.getButtons().length; i++) {
 				if (d.getButtons()[i].isHovering(this)) {

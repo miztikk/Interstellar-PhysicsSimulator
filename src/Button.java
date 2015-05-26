@@ -5,7 +5,7 @@ public class Button {
 	protected float x, y;
 	protected int w, l, fill;
 	protected boolean clicked, toggled;
-	private InputFrame inputFrame;
+	protected InputFrame inputFrame;
 
 	public Button(String n, String d, float x, float y, int s, boolean toggle) {
 		name = n;
@@ -39,11 +39,14 @@ public class Button {
 		p.fill(fill);
 		p.rect(x, y, w, l);
 		p.fill(255);
-		p.textAlign(p.LEFT, p.TOP);
-		p.text(name, x, y + l);
+		p.textAlign(p.RIGHT, p.TOP);
+		p.textSize(Display.DEFAULT_TEXT_SIZE);
+		p.text(name, x + w, y + l);
 		if (isHovering(p)) {
 			p.fill(255);
-			p.textAlign(p.RIGHT);
+			int align = (p.mouseX < 300) ? p.LEFT : p.RIGHT; 
+			p.textAlign(align);
+			p.textSize(Display.DEFAULT_TEXT_SIZE);
 			p.text(description, p.mouseX, p.mouseY);
 		}
 		if (isClicked() && inputFrame != null) {
@@ -52,6 +55,10 @@ public class Button {
 	}
 
 	public void click(PApplet p, Engine e) {
+		// to be instantiated
+	}
+	
+	public void init() {
 		// to be instantiated
 	}
 
@@ -74,10 +81,12 @@ public class Button {
 	
 	public void addInputFrame(InputFrame frame) {
 		inputFrame = frame;
+		inputFrame.init();
 	}
 	
-	public void addInputFrame(int numInputs, int x, int y) {
+	public void addInputFrame(int numInputs, float x, float y) {
 		inputFrame = new InputFrame(numInputs, x, y);
+		inputFrame.init();
 	}
 	
 	public void toggleClicked() {

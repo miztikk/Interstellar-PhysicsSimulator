@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 
 public class Display {
+	public static final float DEFAULT_TEXT_SIZE = 14;
 	private PApplet parent;
 	private Engine engine;
 	private Button[] buttons;
@@ -10,12 +11,19 @@ public class Display {
 	public Display(PApplet p, Engine e) {
 		this.parent = p;
 		this.engine = e;
-		debug = true;
+		debug = false;
 		buttons = new Button[4];
 
 		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.addRanProjectile((float) p.mouseX, (float) p.mouseY);
+				e.addProjectile(inputFrame.getInputs()[0], inputFrame.getInputs()[1], p.mouseX, p.mouseY);
+			}
+			public void init() {
+				addInputFrame(2, 20, 100);
+				String[] names = {"Mass", "Radius"};
+				inputFrame.setInputNames(names);
+				float[] inputs = {400000, 100};
+				inputFrame.setInputs(inputs);
 			}
 		};
 		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
@@ -33,13 +41,15 @@ public class Display {
 				
 			}
 		};
-		buttons[3].addInputFrame(4, 80, 100);
+		buttons[3].addInputFrame(4, 20, 100);
 	}
 
 	public void drawScreen(Engine e) {
 		for (Projectile p : e.getProjectiles()) {
 			if (debug) {
 				parent.fill(255);
+				parent.textAlign(parent.LEFT);
+				parent.textSize(DEFAULT_TEXT_SIZE);
 				parent.text(p.toString(), p.getX() - p.getDiameter(), p.getY()
 						- p.getDiameter());
 			}
@@ -54,8 +64,11 @@ public class Display {
 			buttons[i].display(parent);
 		}
 		if (debug) {
+			
+			
 			parent.fill(255);
 			parent.textAlign(parent.LEFT);
+			parent.textSize(DEFAULT_TEXT_SIZE);
 			parent.text("DEBUG", 5, 10);
 			parent.text("timeSpeed: " + e.getTimeSpeed() + " projectiles: "
 					+ e.getProjectiles().size(), 5, 20);
