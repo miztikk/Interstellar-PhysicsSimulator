@@ -16,8 +16,8 @@ public class Tester extends PApplet {
 		autoChance = .01;
 		d.drawScreen(e);
 		paused = false;
-		
-		for(Button b : d.getButtons()) {
+
+		for (Button b : d.getButtons()) {
 			b.init();
 		}
 	}

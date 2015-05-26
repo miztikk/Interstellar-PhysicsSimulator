@@ -16,11 +16,12 @@ public class Button {
 		l = s;
 		fill = 200;
 		clicked = false;
-		toggled = toggle; //true = toggle enabled
+		toggled = toggle; // true = toggle enabled
 		inputFrame = null;
 	}
-	
-	public Button(String n, String d, float x, float y, int w, int l, boolean toggle) {
+
+	public Button(String n, String d, float x, float y, int w, int l,
+			boolean toggle) {
 		name = n;
 		description = d;
 		this.x = x;
@@ -33,7 +34,6 @@ public class Button {
 		inputFrame = null;
 	}
 
-
 	public void display(PApplet p) {
 		hover(p);
 		p.fill(fill);
@@ -44,7 +44,7 @@ public class Button {
 		p.text(name, x + w, y + l);
 		if (isHovering(p)) {
 			p.fill(255);
-			int align = (p.mouseX < 300) ? p.LEFT : p.RIGHT; 
+			int align = (p.mouseX < 300) ? p.LEFT : p.RIGHT;
 			p.textAlign(align);
 			p.textSize(Display.DEFAULT_TEXT_SIZE);
 			p.text(description, p.mouseX, p.mouseY);
@@ -57,7 +57,7 @@ public class Button {
 	public void click(PApplet p, Engine e) {
 		// to be instantiated
 	}
-	
+
 	public void init() {
 		// to be instantiated
 	}
@@ -73,22 +73,23 @@ public class Button {
 	}
 
 	public boolean isHovering(PApplet p) {
-		if (p.mouseX >= x && p.mouseX <= x + w && p.mouseY >= y && p.mouseY <= y + l) {
+		if (p.mouseX >= x && p.mouseX <= x + w && p.mouseY >= y
+				&& p.mouseY <= y + l) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void addInputFrame(InputFrame frame) {
 		inputFrame = frame;
 		inputFrame.init();
 	}
-	
+
 	public void addInputFrame(int numInputs, float x, float y) {
 		inputFrame = new InputFrame(numInputs, x, y);
 		inputFrame.init();
 	}
-	
+
 	public void toggleClicked() {
 		clicked = !clicked;
 	}
@@ -144,12 +145,14 @@ public class Button {
 	public void setL(int l) {
 		this.l = l;
 	}
-	
+
 	public int getSize() {
-		if (w == l) return w;
-		else return 0;
+		if (w == l)
+			return w;
+		else
+			return 0;
 	}
-	
+
 	public void setSize(int s) {
 		this.w = s;
 		this.l = s;
