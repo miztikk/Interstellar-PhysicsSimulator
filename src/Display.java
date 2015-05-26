@@ -16,38 +16,46 @@ public class Display {
 		debug = false;
 		buttons = new ArrayList<Button>();
 
-		buttons.add(new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
+		buttons.add(new Button("Mass", "create a massive object", p.width - 50,
+				100, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.addProjectile(inputFrame.getInputs()[0], inputFrame.getInputs()[1], p.mouseX, p.mouseY);
+				e.addProjectile(inputFrame.getInputs()[0], p.mouseX, p.mouseY);
 			}
+
 			public void init() {
 				addInputFrame(2, 20, 100);
-				String[] names = {"Mass", "Radius"};
+				String[] names = { "Mass", "Radius" };
 				inputFrame.setInputNames(names);
-				float[] inputs = {400000, 100};
+				float[] inputs = { (float) Engine.EARTHMASS, 100 };
 				inputFrame.setInputs(inputs);
 			}
 		});
-		buttons.add(new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
+		buttons.add(new Button("Vector",
+				"change the velocity and direction of an object", p.width - 50,
+				150, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.vector(inputFrame.getInputs()[0]);
+				// e.vector(inputFrame.getInputs()[0]);
 			}
+
 			public void init() {
 				addInputFrame(1, 20, 100);
-				String[] names = {"Scale (1:n)"};
+				String[] names = { "Scale (1:n)" };
 				inputFrame.setInputNames(names);
-				float[] inputs = {1};
+				float[] inputs = { 1 };
 				inputFrame.setInputs(inputs);
 			}
 		});
-		buttons.add(new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
+		buttons.add(new Button("Settings",
+				"change game settings like time speed", p.width - 50, 200, 30,
+				true) {
 			public void click(PApplet p, Engine e) {
-				
+
 			}
 		});
-		buttons.add(new Button("Test", "this is a test button", p.width - 50, 250, 30, true) {
+		buttons.add(new Button("Test", "this is a test button", p.width - 50,
+				250, 30, true) {
 			public void click(PApplet p, Engine e) {
-				
+
 			}
 		});
 		buttons.get(3).addInputFrame(4, 20, 100);
@@ -73,8 +81,7 @@ public class Display {
 			buttons.get(i).display(parent);
 		}
 		if (debug) {
-			
-			
+
 			parent.fill(255);
 			parent.textAlign(parent.LEFT);
 			parent.textSize(DEFAULT_TEXT_SIZE);
