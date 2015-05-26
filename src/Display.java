@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class Display {
 	public static final float DEFAULT_TEXT_SIZE = 14;
 	private PApplet parent;
 	private Engine engine;
-	private Button[] buttons;
+	private ArrayList<Button> buttons;
 	private boolean debug;
 	private int clickedIndex;
 
@@ -12,9 +14,9 @@ public class Display {
 		this.parent = p;
 		this.engine = e;
 		debug = false;
-		buttons = new Button[4];
+		buttons = new ArrayList<Button>();
 
-		buttons[0] = new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
+		buttons.add(new Button("Mass", "create a massive object", p.width - 50, 100, 30, true) {
 			public void click(PApplet p, Engine e) {
 				e.addProjectile(inputFrame.getInputs()[0], inputFrame.getInputs()[1], p.mouseX, p.mouseY);
 			}
@@ -25,10 +27,10 @@ public class Display {
 				float[] inputs = {400000, 100};
 				inputFrame.setInputs(inputs);
 			}
-		};
-		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
+		});
+		buttons.add(new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.vector(inputFrame.getInputs()[0], );
+				e.vector(inputFrame.getInputs()[0]);
 			}
 			public void init() {
 				addInputFrame(1, 20, 100);
@@ -37,18 +39,18 @@ public class Display {
 				float[] inputs = {1};
 				inputFrame.setInputs(inputs);
 			}
-		};
-		buttons[2] = new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
+		});
+		buttons.add(new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
-		};
-		buttons[3] = new Button("Test", "this is a test button", p.width - 50, 250, 30, true) {
+		});
+		buttons.add(new Button("Test", "this is a test button", p.width - 50, 250, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
-		};
-		buttons[3].addInputFrame(4, 20, 100);
+		});
+		buttons.get(3).addInputFrame(4, 20, 100);
 	}
 
 	public void drawScreen(Engine e) {
@@ -63,12 +65,12 @@ public class Display {
 			determineFill(p.getType());
 			parent.ellipse(p.getX(), p.getY(), p.getDiameter(), p.getDiameter());
 		}
-		for (int i = 0; i < buttons.length; i++) {
-			buttons[i].setX(parent.width - 50);
-			if (buttons[i].isClicked() && i != clickedIndex) {
-				buttons[i].setClicked(false);
+		for (int i = 0; i < buttons.size(); i++) {
+			buttons.get(i).setX(parent.width - 50);
+			if (buttons.get(i).isClicked() && i != clickedIndex) {
+				buttons.get(i).setClicked(false);
 			}
-			buttons[i].display(parent);
+			buttons.get(i).display(parent);
 		}
 		if (debug) {
 			
@@ -98,7 +100,7 @@ public class Display {
 		parent.fill(c.getR(), c.getG(), c.getB());
 	}
 
-	public Button[] getButtons() {
+	public ArrayList<Button> getButtons() {
 		return buttons;
 	}
 

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import processing.core.PApplet;
 
 public class Engine {
 	private ArrayList<Projectile> projectiles;
