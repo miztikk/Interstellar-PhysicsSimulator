@@ -26,31 +26,35 @@ public class Display {
 				inputFrame.setInputNames(names);
 				float[] inputs = {400000, 100};
 				inputFrame.setInputs(inputs);
+				inputFrame.init();
 			}
 		});
 		buttons.add(new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
 			public void click(PApplet p, Engine e) {
-				e.vector(inputFrame.getInputs()[0]);
+//				e.vector(inputFrame.getInputs()[0]);
 			}
 			public void init() {
 				addInputFrame(1, 20, 100);
-				String[] names = {"Scale (1:n)"};
+				String[] names = {"Scale"};
 				inputFrame.setInputNames(names);
 				float[] inputs = {1};
 				inputFrame.setInputs(inputs);
+				inputFrame.init();
 			}
 		});
 		buttons.add(new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
 			public void click(PApplet p, Engine e) {
 				
 			}
-		});
-		buttons.add(new Button("Test", "this is a test button", p.width - 50, 250, 30, true) {
-			public void click(PApplet p, Engine e) {
-				
+			public void init() {
+				addInputFrame(1, 20, 100);
+				String[] names = {"Time Speed"};
+				inputFrame.setInputNames(names);
+				float[] inputs = {1};
+				inputFrame.setInputs(inputs);
+				inputFrame.init();
 			}
 		});
-		buttons.get(3).addInputFrame(4, 20, 100);
 	}
 
 	public void drawScreen(Engine e) {
