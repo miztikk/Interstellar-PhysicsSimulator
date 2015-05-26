@@ -63,12 +63,12 @@ public class Tester extends PApplet {
 
 	public void mouseReleased() {
 		if (mouseButton == LEFT) {
-			if (d.isMouseFree() && e.isMouseFree(mouseX, mouseY))
-				d.getButtons()[d.getClickedIndex()].click(this, e);
-			for (int i = 0; i < d.getButtons().length; i++) {
-				if (d.getButtons()[i].isHovering(this)) {
+			if (d.isMouseFree())
+				d.getButtons().get(d.getClickedIndex()).click(this, e);
+			for (int i = 0; i < d.getButtons().size(); i++) {
+				if (d.getButtons().get(i).isHovering(this)) {
 					d.setClickedIndex(i);
-					d.getButtons()[i].toggleClicked();
+					d.getButtons().get(i).toggleClicked();
 				}
 			}
 		}
