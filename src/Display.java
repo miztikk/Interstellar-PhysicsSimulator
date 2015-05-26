@@ -28,7 +28,14 @@ public class Display {
 		};
 		buttons[1] = new Button("Vector", "change the velocity and direction of an object", p.width - 50, 150, 30, true) {
 			public void click(PApplet p, Engine e) {
-				
+				e.vector(inputFrame.getInputs()[0], );
+			}
+			public void init() {
+				addInputFrame(1, 20, 100);
+				String[] names = {"Scale (1:n)"};
+				inputFrame.setInputNames(names);
+				float[] inputs = {1};
+				inputFrame.setInputs(inputs);
 			}
 		};
 		buttons[2] = new Button("Settings", "change game settings like time speed", p.width - 50, 200, 30, true) {
