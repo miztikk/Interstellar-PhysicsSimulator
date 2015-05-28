@@ -74,7 +74,45 @@ public class Projectile extends Mass {
 	public void setyAcc(double yAcc) {
 		this.yAcc = yAcc;
 	}
+	
+	public double getXValue(int type) {
+		if (type == Engine.VELOCITY)
+			return getxVel();
+		if (type == Engine.ACCELERATION)
+			return getxAcc();
+		if (type == Engine.POSITION)
+			return getX();
+		return 0;
+	}
+	
+	public void setXValue(int type, double value) {
+		if (type == Engine.VELOCITY)
+			setxVel(value);
+		if (type == Engine.ACCELERATION)
+			setxAcc(value);
+		if (type == Engine.POSITION)
+			setX((float) value);
+	}
+	
+	public double getYValue(int type) {
+		if (type == Engine.VELOCITY)
+			return getyVel();
+		if (type == Engine.ACCELERATION)
+			return getyAcc();
+		if (type == Engine.POSITION)
+			return getY();
+		return 0;
+	}
 
+	public void setYValue(int type, double value) {
+		if (type == Engine.VELOCITY)
+			setyVel(value);
+		if (type == Engine.ACCELERATION)
+			setyAcc(value);
+		if (type == Engine.POSITION)
+			setY((float) value);
+	}
+	
 	public String toString() {
 		return "Mass: " + mass + " Radius: " + diameter + " (" + Math.round(x)
 				+ "," + Math.round(y) + ") Type: " + type + " "

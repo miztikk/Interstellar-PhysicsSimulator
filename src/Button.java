@@ -1,11 +1,13 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 public class Button {
 	protected String name, description;
-	protected float x, y;
+	protected float x, y, increment;
 	protected int w, l, fill;
 	protected boolean clicked, toggled;
 	protected InputFrame inputFrame;
+	protected int clickCount; //Counts clicks and doubles as index variable (for InputFrame)
 
 	public Button(String n, String d, float x, float y, int s, boolean toggle) {
 		name = n;
@@ -18,6 +20,7 @@ public class Button {
 		clicked = false;
 		toggled = toggle; // true = toggle enabled
 		inputFrame = null;
+		clickCount = 0;
 	}
 
 	public Button(String n, String d, float x, float y, int w, int l,
@@ -32,6 +35,7 @@ public class Button {
 		clicked = false;
 		toggled = toggle;
 		inputFrame = null;
+		clickCount = 0;
 	}
 
 	public void display(PApplet p) {
@@ -39,12 +43,12 @@ public class Button {
 		p.fill(fill);
 		p.rect(x, y, w, l);
 		p.fill(255);
-		p.textAlign(p.RIGHT, p.TOP);
+		p.textAlign(PConstants.RIGHT, PConstants.TOP);
 		p.textSize(Display.DEFAULT_TEXT_SIZE);
 		p.text(name, x + w, y + l);
 		if (isHovering(p)) {
 			p.fill(255);
-			int align = (p.mouseX < 300) ? p.LEFT : p.RIGHT;
+			int align = (p.mouseX < 300) ? PConstants.LEFT : PConstants.RIGHT;
 			p.textAlign(align);
 			p.textSize(Display.DEFAULT_TEXT_SIZE);
 			p.text(description, p.mouseX, p.mouseY);
@@ -55,7 +59,8 @@ public class Button {
 	}
 
 	public void click(PApplet p, Engine e) {
-		// to be instantiated
+		clickCount++;
+		// to be re-instantiated
 	}
 
 	public void init() {
@@ -79,10 +84,13 @@ public class Button {
 		}
 		return false;
 	}
+	
+	public InputFrame getInputFrame() {
+		return this.inputFrame;
+	}
 
 	public void addInputFrame(InputFrame frame) {
 		inputFrame = frame;
-		inputFrame.init();
 	}
 
 	public void addInputFrame(int numInputs, float x, float y) {
@@ -168,5 +176,25 @@ public class Button {
 
 	public void setClicked(boolean clicked) {
 		this.clicked = clicked;
+	}
+
+	public int getClickCount() {
+		return clickCount;
+	}
+
+	public void setClickCount(int clickCount) {
+		this.clickCount = clickCount;
+	}
+	
+	public boolean getToggled() {
+		return toggled;
+	}
+
+	public float getIncrement() {
+		return increment;
+	}
+
+	public void setIncrement(float increment) {
+		this.increment = increment;
 	}
 }

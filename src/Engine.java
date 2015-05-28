@@ -7,6 +7,7 @@ public class Engine {
 	private double timeSpeed;
 	private static final double G = Math.pow(6.673, -11);
 	public static final double EARTHMASS = Math.pow(5.972, 14) / 2;
+	public static final int VELOCITY = 0, ACCELERATION = 1, POSITION = 2;
 
 	public Engine() {
 		projectiles = new ArrayList<Projectile>();
@@ -30,13 +31,15 @@ public class Engine {
 		addProjectiles();
 		removeProjectiles();
 	}
-
-	public void vector(float scale, float x1, float y1, float x2, float y2) {
-		if (!isMouseFree(x1, y1)) {
-			double hyp = Math.tan((y2 - y1) / (x2 - x1));
-			projectileAt(x1, y1).setxVel(scale * Math.cos((x2 - x1) / hyp));
-			projectileAt(x1, y1).setyVel(scale * Math.sin((y2 - y1) / hyp));
-		}
+	
+	public void vector(int type, float scale, Projectile projectile, float x2, float y2) {
+		if (x2 - projectile.getXValue(type) == 0)
+			projectile.setYValue(type, scale * (y2 - projectile.getYValue(type)));
+		if (y2 - projectile.getYValue(type) == 0)
+			projectile.setXValue(type, scale * (x2 - projectile.getXValue(type)));
+		double hyp = Math.tan((x2 - projectile.getXValue(type)) / y2 - projectile.getYValue(type));
+		projectile.setXValue(type, scale * (Math.cos(x2 - projectile.getXValue(type) / hyp)));
+		projectile.setYValue(type, scale * (Math.sin(y2 - projectile.getYValue(type) / hyp)));
 	}
 
 	public void collision(Projectile p, Projectile p2, double dist) {
@@ -163,6 +166,23 @@ public class Engine {
 			}
 		}
 		return null;
+	}
+	
+	public Projectile projectileSelected() {
+		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
+			Projectile projectile = iter.next();
+			if (projectile.getIsSelected()) return projectile;
+		}
+		return null;
+	}
+	
+	public void selectProjectile(float x, float y) {
+		for (Iterator<Projectile> iter = projectiles.iterator(); iter.hasNext();) {
+			Projectile projectile = iter.next();
+			if (projectile.getIsSelected())
+				projectile.setIsSelected(false);
+		}
+		projectileAt(x, y).setIsSelected(true);
 	}
 
 	public void changeTimeSpeed(double val) {

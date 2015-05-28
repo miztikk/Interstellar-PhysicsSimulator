@@ -17,9 +17,6 @@ public class Tester extends PApplet {
 		d.drawScreen(e);
 		paused = false;
 
-		for (Button b : d.getButtons()) {
-			b.init();
-		}
 	}
 
 	public void draw() {
@@ -66,7 +63,8 @@ public class Tester extends PApplet {
 			if (d.isMouseFree())
 				d.getButtons().get(d.getClickedIndex()).click(this, e);
 			for (int i = 0; i < d.getButtons().size(); i++) {
-				if (d.getButtons().get(i).isHovering(this)) {
+				if (d.getButtons().get(i).isHovering(this)
+						&& d.getButtons().get(i).getToggled()) {
 					d.setClickedIndex(i);
 					d.getButtons().get(i).toggleClicked();
 				}

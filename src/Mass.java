@@ -3,6 +3,7 @@ public class Mass {
 	protected int type;
 	protected float x, y, diameter;
 	protected static final double SCALE = Math.pow(5.5, 12);
+	protected boolean isSelected;
 
 	public Mass(double m, float diameter, float x, float y) {
 		mass = m;
@@ -52,6 +53,14 @@ public class Mass {
 			this.type = -3;
 		else if (type <= 0 && diameter < 200)
 			this.type = -4;
+	}
+	
+	public boolean getIsSelected() {
+		return isSelected;
+	}
+	
+	public void setIsSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 
 	public void updateDiameter() {
