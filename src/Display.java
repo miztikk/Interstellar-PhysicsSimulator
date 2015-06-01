@@ -15,12 +15,15 @@ public class Display {
 		this.parent = p;
 		debug = false;
 		buttons = new ArrayList<Button>();
-
-		for (int i = 0; i < NUM_BUTTONS; i++) {
-			buttons.add(createButton(i));
-			buttons.get(i).init();
-			buttons.add(buttons.get(i).getInputFrame());
-		}
+		
+	}
+	
+	public void initButtons() {
+//		for (int i = 0; i < NUM_BUTTONS; i++) {
+//			buttons.add(createButton(i));
+//			buttons.get(i).init();
+//			buttons.add(buttons.get(i).getInputFrame());
+//		}
 	}
 
 	public void drawScreen(Engine e) {
@@ -35,15 +38,15 @@ public class Display {
 			determineFill(p.getType());
 			parent.ellipse(p.getX(), p.getY(), p.getDiameter(), p.getDiameter());
 		}
-		for (int i = 0; i < buttons.size(); i++) {
-			if (!(buttons.get(i) instanceof InputFrame)) {
-				buttons.get(i).setX(parent.width - 50);
-				if (buttons.get(i).isClicked() && i != clickedIndex) {
-					buttons.get(i).setClicked(false);
-				}
-				buttons.get(i).display(parent);
-			}
-		}
+//		for (int i = 0; i < buttons.size(); i++) {
+//			if (!(buttons.get(i) instanceof InputFrame)) {
+//				buttons.get(i).setX(parent.width - 50);
+//				if (buttons.get(i).isClicked() && i != clickedIndex) {
+//					buttons.get(i).setClicked(false);
+//				}
+//				buttons.get(i).display(parent);
+//			}
+//		}
 		if (debug) {
 			parent.fill(255);
 			parent.textAlign(PConstants.LEFT);
@@ -105,11 +108,11 @@ public class Display {
 			}
 			public void init() {
 				addInputFrame(2, 20, 100);
+				inputFrame.init();
 				String[] names = { "Mass", "Radius" };
 				inputFrame.setInputNames(names);
 				float[] inputs = { (float) Engine.EARTHMASS, 100 };
 				inputFrame.setInputs(inputs);
-				inputFrame.init();
 			}
 		};
 	}
@@ -130,11 +133,11 @@ public class Display {
 			}
 			public void init() {
 				addInputFrame(2, 20, 100);
+				inputFrame.init();
 				String[] names = { "Type", "Scale"};
 				inputFrame.setInputNames(names);
 				float[] inputs = { 0, 1 };
 				inputFrame.setInputs(inputs);
-				inputFrame.init();
 			}
 		};
 	}
@@ -149,11 +152,11 @@ public class Display {
 
 			public void init() {
 				addInputFrame(1, 20, 100);
+				inputFrame.init();
 				String[] names = { "Time Speed" };
 				inputFrame.setInputNames(names);
 				float[] inputs = { 1 };
 				inputFrame.setInputs(inputs);
-				inputFrame.init();
 			}
 		};
 	}

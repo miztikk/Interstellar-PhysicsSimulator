@@ -14,9 +14,8 @@ public class Tester extends PApplet {
 		e = new Engine();
 		auto = false;
 		autoChance = .01;
-		d.drawScreen(e);
 		paused = false;
-
+//		d.initButtons();
 	}
 
 	public void draw() {
@@ -60,15 +59,16 @@ public class Tester extends PApplet {
 
 	public void mouseReleased() {
 		if (mouseButton == LEFT) {
-			if (d.isMouseFree())
-				d.getButtons().get(d.getClickedIndex()).click(this, e);
-			for (int i = 0; i < d.getButtons().size(); i++) {
-				if (d.getButtons().get(i).isHovering(this)
-						&& d.getButtons().get(i).getToggled()) {
-					d.setClickedIndex(i);
-					d.getButtons().get(i).toggleClicked();
-				}
-			}
+			e.addProjectile(e.EARTHMASS, mouseX, mouseY);
+//			if (d.isMouseFree())
+//				d.getButtons().get(d.getClickedIndex()).click(this, e);
+//			for (int i = 0; i < d.getButtons().size(); i++) {
+//				if (d.getButtons().get(i).isHovering(this)
+//						&& d.getButtons().get(i).getToggled()) {
+//					d.setClickedIndex(i);
+//					d.getButtons().get(i).toggleClicked();
+//				}
+//			}
 		}
 		if (mouseButton == RIGHT) {
 			e.removeProjectile((float) mouseX, (float) mouseY);
